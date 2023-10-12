@@ -9,7 +9,7 @@
 /* Begin PBXBuildFile section */
 		6BCD96272AD8289100F4BB3E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BCD96262AD8289100F4BB3E /* AppDelegate.swift */; };
 		6BCD96292AD8289100F4BB3E /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BCD96282AD8289100F4BB3E /* SceneDelegate.swift */; };
-		6BCD962B2AD8289100F4BB3E /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BCD962A2AD8289100F4BB3E /* ViewController.swift */; };
+		6BCD962B2AD8289100F4BB3E /* NoteDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BCD962A2AD8289100F4BB3E /* NoteDetailViewController.swift */; };
 		6BCD962E2AD8289100F4BB3E /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6BCD962C2AD8289100F4BB3E /* Main.storyboard */; };
 		6BCD96312AD8289100F4BB3E /* NotebookCoreData.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 6BCD962F2AD8289100F4BB3E /* NotebookCoreData.xcdatamodeld */; };
 		6BCD96332AD8289300F4BB3E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6BCD96322AD8289300F4BB3E /* Assets.xcassets */; };
@@ -17,6 +17,8 @@
 		6BCD96412AD8289300F4BB3E /* NotebookCoreDataTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BCD96402AD8289300F4BB3E /* NotebookCoreDataTests.swift */; };
 		6BCD964B2AD8289300F4BB3E /* NotebookCoreDataUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BCD964A2AD8289300F4BB3E /* NotebookCoreDataUITests.swift */; };
 		6BCD964D2AD8289300F4BB3E /* NotebookCoreDataUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BCD964C2AD8289300F4BB3E /* NotebookCoreDataUITestsLaunchTests.swift */; };
+		6BCD965A2AD82CE500F4BB3E /* NoteTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BCD96592AD82CE500F4BB3E /* NoteTableView.swift */; };
+		6BCD965C2AD82CF000F4BB3E /* NoteCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BCD965B2AD82CF000F4BB3E /* NoteCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -40,7 +42,7 @@
 		6BCD96232AD8289100F4BB3E /* NotebookCoreData.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = NotebookCoreData.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		6BCD96262AD8289100F4BB3E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		6BCD96282AD8289100F4BB3E /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		6BCD962A2AD8289100F4BB3E /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		6BCD962A2AD8289100F4BB3E /* NoteDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoteDetailViewController.swift; sourceTree = "<group>"; };
 		6BCD962D2AD8289100F4BB3E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		6BCD96302AD8289100F4BB3E /* NotebookCoreData.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = NotebookCoreData.xcdatamodel; sourceTree = "<group>"; };
 		6BCD96322AD8289300F4BB3E /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -51,6 +53,8 @@
 		6BCD96462AD8289300F4BB3E /* NotebookCoreDataUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = NotebookCoreDataUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		6BCD964A2AD8289300F4BB3E /* NotebookCoreDataUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotebookCoreDataUITests.swift; sourceTree = "<group>"; };
 		6BCD964C2AD8289300F4BB3E /* NotebookCoreDataUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotebookCoreDataUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		6BCD96592AD82CE500F4BB3E /* NoteTableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoteTableView.swift; sourceTree = "<group>"; };
+		6BCD965B2AD82CF000F4BB3E /* NoteCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoteCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -103,7 +107,9 @@
 			children = (
 				6BCD96262AD8289100F4BB3E /* AppDelegate.swift */,
 				6BCD96282AD8289100F4BB3E /* SceneDelegate.swift */,
-				6BCD962A2AD8289100F4BB3E /* ViewController.swift */,
+				6BCD962A2AD8289100F4BB3E /* NoteDetailViewController.swift */,
+				6BCD96592AD82CE500F4BB3E /* NoteTableView.swift */,
+				6BCD965B2AD82CF000F4BB3E /* NoteCell.swift */,
 				6BCD962C2AD8289100F4BB3E /* Main.storyboard */,
 				6BCD96322AD8289300F4BB3E /* Assets.xcassets */,
 				6BCD96342AD8289300F4BB3E /* LaunchScreen.storyboard */,
@@ -261,9 +267,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				6BCD962B2AD8289100F4BB3E /* ViewController.swift in Sources */,
+				6BCD962B2AD8289100F4BB3E /* NoteDetailViewController.swift in Sources */,
 				6BCD96312AD8289100F4BB3E /* NotebookCoreData.xcdatamodeld in Sources */,
 				6BCD96272AD8289100F4BB3E /* AppDelegate.swift in Sources */,
+				6BCD965C2AD82CF000F4BB3E /* NoteCell.swift in Sources */,
+				6BCD965A2AD82CE500F4BB3E /* NoteTableView.swift in Sources */,
 				6BCD96292AD8289100F4BB3E /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
