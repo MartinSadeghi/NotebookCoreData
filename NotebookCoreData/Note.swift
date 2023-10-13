@@ -13,7 +13,7 @@ import CoreData
 class Note: NSManagedObject {
     
     @NSManaged var id_: NSNumber!
-    @NSManaged var title_: NSNumber!
-    @NSManaged var description_: NSNumber!
-    @NSManaged var deletedDate_: NSNumber!
+    @NSManaged var title_: String!
+    @NSManaged var description_: String!
+    @NSManaged var deletedDate_: Date!
 }

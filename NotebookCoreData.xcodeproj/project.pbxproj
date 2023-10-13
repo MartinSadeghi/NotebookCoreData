@@ -109,8 +109,8 @@
 			children = (
 				6BCD96262AD8289100F4BB3E /* AppDelegate.swift */,
 				6BCD96282AD8289100F4BB3E /* SceneDelegate.swift */,
-				6BCD962A2AD8289100F4BB3E /* NoteDetailViewController.swift */,
 				6BCD96592AD82CE500F4BB3E /* NoteTableView.swift */,
+				6BCD962A2AD8289100F4BB3E /* NoteDetailViewController.swift */,
 				6BCD965B2AD82CF000F4BB3E /* NoteCell.swift */,
 				6B9E9C192AD8398D004104F8 /* Note.swift */,
 				6BCD962C2AD8289100F4BB3E /* Main.storyboard */,
