@@ -11,6 +11,8 @@ import CoreData
 class NoteDetailViewController: UIViewController {
 
 
+    var noteList: [Note] = []
+
     @IBOutlet weak var titleTextField: UITextField!
     
     @IBOutlet weak var descriptionTextView: UITextView!

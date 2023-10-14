@@ -9,21 +9,40 @@ import UIKit
 import CoreData
 
 
-var noteList = [Note]()
+//var noteList = [Note]()
 
 
 class NoteTableView: UITableViewController {
+    
+    var noteList = [Note]()
+    var firstLoad = false
    
     override func viewDidLoad() {
         super.viewDidLoad()
+        if firstLoad {
+            firstLoad = true
+        } else {
+            let appDelegate = UIApplication.shared.delegate as! AppDelegate
+            let context: NSManagedObjectContext = appDelegate.persistentContainer.viewContext
+            let request = NSFetchRequest<NSFetchRequestResult>(entityName: "Note")
+            do {
+                let results = try context.fetch(request)
+                for result in results {
+                    guard let note = result as? Note else { return }
+                    noteList.append(note)
+                }
+            } catch  {
+                 print("Fetch failed!")
+            }
+        }
+        
     }
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         tableView.reloadData()
     }
-    
-    
+
     
 }
 
