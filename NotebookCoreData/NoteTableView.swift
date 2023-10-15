@@ -19,22 +19,22 @@ class NoteTableView: UITableViewController {
    
     override func viewDidLoad() {
         super.viewDidLoad()
-        if firstLoad {
-            firstLoad = true
-        } else {
-            let appDelegate = UIApplication.shared.delegate as! AppDelegate
-            let context: NSManagedObjectContext = appDelegate.persistentContainer.viewContext
-            let request = NSFetchRequest<NSFetchRequestResult>(entityName: "Note")
-            do {
-                let results = try context.fetch(request)
-                for result in results {
-                    guard let note = result as? Note else { return }
-                    noteList.append(note)
-                }
-            } catch  {
-                 print("Fetch failed!")
-            }
-        }
+//        if firstLoad {
+//            firstLoad = true
+//        } else {
+//            let appDelegate = UIApplication.shared.delegate as! AppDelegate
+//            let context: NSManagedObjectContext = appDelegate.persistentContainer.viewContext
+//            let request = NSFetchRequest<NSFetchRequestResult>(entityName: "Note")
+//            do {
+//                let results = try context.fetch(request)
+//                for result in results {
+//                    guard let note = result as? Note else { return }
+//                    noteList.append(note)
+//                }
+//            } catch  {
+//                 print("Fetch failed!")
+//            }
+//        }
         
     }
     
@@ -62,6 +62,23 @@ extension NoteTableView {
         return noteCell
     }
     
+    
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        self.performSegue(withIdentifier: "editNote", sender: self)
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "editNote" {
+            let indexPath = tableView.indexPathForSelectedRow
+            let noteDetail = segue.destination as? NoteDetailViewController
+            let selectedNote: Note
+            selectedNote = noteList[indexPath?.row ?? 1]
+            noteDetail?.selectedNote = selectedNote
+            tableView.deselectRow(at: indexPath!, animated: true)
+        }
+    }
+    
+   
     
     
     
