@@ -9,7 +9,7 @@ import UIKit
 import CoreData
 
 
-protocol NoteDetailDelegate {
+protocol NoteDetailDelegate: AnyObject {
     func didAddNewNote(noteTitle: String, noteDescription: String)
 }
 
@@ -23,6 +23,7 @@ class NoteDetailViewController: UIViewController {
     @IBOutlet weak var titleTextField: UITextField!
     
     @IBOutlet weak var descriptionTextView: UITextView!
+    weak var noteDetailDelegate: NoteDetailDelegate?
     
     
     
@@ -39,7 +40,7 @@ class NoteDetailViewController: UIViewController {
         let context: NSManagedObjectContext = appDelegate.persistentContainer.viewContext
         if selectedNote == nil {
             guard let entity = NSEntityDescription.entity(forEntityName: "Note", in: context) else { return }
-            let newNote = Note(entity: entity, insertInto: context)
+//            let newNote = Note(entity: entity, insertInto: context)
             newNote.id_ = noteList.count as NSNumber
             newNote.title_ = titleTextField.text
             newNote.description_ = descriptionTextView.text

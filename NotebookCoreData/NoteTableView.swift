@@ -19,22 +19,22 @@ class NoteTableView: UITableViewController {
    
     override func viewDidLoad() {
         super.viewDidLoad()
-//        if firstLoad {
-//            firstLoad = true
-//        } else {
-//            let appDelegate = UIApplication.shared.delegate as! AppDelegate
-//            let context: NSManagedObjectContext = appDelegate.persistentContainer.viewContext
-//            let request = NSFetchRequest<NSFetchRequestResult>(entityName: "Note")
-//            do {
-//                let results = try context.fetch(request)
-//                for result in results {
-//                    guard let note = result as? Note else { return }
-//                    noteList.append(note)
-//                }
-//            } catch  {
-//                 print("Fetch failed!")
-//            }
-//        }
+        if firstLoad {
+            firstLoad = true
+        } else {
+            let appDelegate = UIApplication.shared.delegate as! AppDelegate
+            let context: NSManagedObjectContext = appDelegate.persistentContainer.viewContext
+            let request = NSFetchRequest<NSFetchRequestResult>(entityName: "Note")
+            do {
+                let results = try context.fetch(request)
+                for result in results {
+                    guard let note = result as? Note else { return }
+                    noteList.append(note)
+                }
+            } catch  {
+                 print("Fetch failed!")
+            }
+        }
         
     }
     
@@ -43,6 +43,9 @@ class NoteTableView: UITableViewController {
         tableView.reloadData()
     }
 
+    @IBAction func addNewNoteBtnTapped(_ sender: UIBarButtonItem) {
+        
+    }
     
 }
 
