@@ -12,11 +12,16 @@ import CoreData
 //var noteList = [Note]()
 
 
-class NoteTableView: UITableViewController {
+class NoteTableView: UITableViewController, NoteDetailDelegate {
     
-    var noteList = [Note]()
+    func didAddNewNote(noteTitle: String, noteDescription: String) {
+        addNewNote(noteID: 0, noteTitle: noteTitle, noteDescription: noteDescription, deletedDate: Date(timeIntervalSinceNow: 1))
+    }
+    
+    
+    var noteList = [NoteCoreData]()
     var firstLoad = false
-   
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         if firstLoad {
@@ -24,15 +29,15 @@ class NoteTableView: UITableViewController {
         } else {
             let appDelegate = UIApplication.shared.delegate as! AppDelegate
             let context: NSManagedObjectContext = appDelegate.persistentContainer.viewContext
-            let request = NSFetchRequest<NSFetchRequestResult>(entityName: "Note")
+            let request = NSFetchRequest<NSFetchRequestResult>(entityName: "NoteCoreData")
             do {
                 let results = try context.fetch(request)
                 for result in results {
-                    guard let note = result as? Note else { return }
+                    guard let note = result as? NoteCoreData else { return }
                     noteList.append(note)
                 }
             } catch  {
-                 print("Fetch failed!")
+                print("Fetch failed!")
             }
         }
         
@@ -42,10 +47,29 @@ class NoteTableView: UITableViewController {
         super.viewDidAppear(animated)
         tableView.reloadData()
     }
-
+    
     @IBAction func addNewNoteBtnTapped(_ sender: UIBarButtonItem) {
-        
+        if let newNoteVC = self.storyboard?.instantiateViewController(withIdentifier: "NoteDetailViewController") as? NoteDetailViewController {
+            newNoteVC.noteDetailDelegate = self
+            self.navigationController?.pushViewController(newNoteVC, animated: true)
+        }
     }
+    
+    func addNewNote(noteID: Int, noteTitle: String, noteDescription: String, deletedDate: Date ) {
+        let appDelegate = UIApplication.shared.delegate as! AppDelegate
+        let context = appDelegate.persistentContainer.viewContext
+        noteList.append(NoteCoreData(id_: noteID as NSNumber, title_: noteTitle, description_: noteDescription, deletedDate_: deletedDate, context: context))
+        DispatchQueue.main.async { [weak self] in
+            self?.tableView.reloadData()
+        }
+    }
+    
+    
+//    func addNote(noteTitle: String, noteDescription: String) {
+//        let appDelegate = UIApplication.shared.delegate as! AppDelegate
+//        let context: NSManagedObjectContext = appDelegate.persistentContainer.viewContext
+//        notes.append(NoteData(title_: noteTitle, description_: noteDescription, context: context))
+//    }
     
 }
 
@@ -58,7 +82,7 @@ extension NoteTableView {
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let noteCell = tableView.dequeueReusableCell(withIdentifier: "noteCellID", for: indexPath) as? NoteCell else { return UITableViewCell() }
-        let theNote: Note!
+        let theNote: NoteCoreData!
         theNote = noteList[indexPath.row]
         noteCell.noteTitleLable.text = theNote.title_
         noteCell.noteDescriptionLable.text = theNote.description_
@@ -74,14 +98,14 @@ extension NoteTableView {
         if segue.identifier == "editNote" {
             let indexPath = tableView.indexPathForSelectedRow
             let noteDetail = segue.destination as? NoteDetailViewController
-            let selectedNote: Note
+            let selectedNote: NoteCoreData
             selectedNote = noteList[indexPath?.row ?? 1]
             noteDetail?.selectedNote = selectedNote
             tableView.deselectRow(at: indexPath!, animated: true)
         }
     }
     
-   
+    
     
     
     

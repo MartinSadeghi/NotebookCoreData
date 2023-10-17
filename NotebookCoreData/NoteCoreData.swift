@@ -9,9 +9,9 @@ import CoreData
 
 
 
-@objc(Note)
+@objc(NoteCoreData)
 
-class Note: NSManagedObject {
+class NoteCoreData: NSManagedObject {
     
     @NSManaged var id_: NSNumber
     @NSManaged var title_: String
@@ -19,7 +19,7 @@ class Note: NSManagedObject {
     @NSManaged var deletedDate_: Date
     
     init(id_: NSNumber, title_: String, description_: String, deletedDate_: Date, context: NSManagedObjectContext) {
-        let entity = NSEntityDescription.entity(forEntityName: "Note", in: context)
+        let entity = NSEntityDescription.entity(forEntityName: "NoteCoreData", in: context)
         super.init(entity: entity!, insertInto: context)
         
         self.id_ = id_
