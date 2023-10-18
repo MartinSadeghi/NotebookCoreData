@@ -9,15 +9,7 @@ import UIKit
 import CoreData
 
 
-//var noteList = [Note]()
-
-
-class NoteTableView: UITableViewController, NoteDetailDelegate {
-    
-    func didAddNewNote(noteTitle: String, noteDescription: String) {
-        addNewNote(noteID: 0, noteTitle: noteTitle, noteDescription: noteDescription, deletedDate: Date(timeIntervalSinceNow: 1))
-    }
-    
+class NoteTableView: UITableViewController {
     
     var noteList = [NoteCoreData]()
     var firstLoad = false
@@ -55,26 +47,23 @@ class NoteTableView: UITableViewController, NoteDetailDelegate {
         }
     }
     
-    func addNewNote(noteID: Int, noteTitle: String, noteDescription: String, deletedDate: Date ) {
+    func addNewNote(noteID: Int, noteTitle: String, noteDescription: String ) {
         let appDelegate = UIApplication.shared.delegate as! AppDelegate
         let context = appDelegate.persistentContainer.viewContext
-        noteList.append(NoteCoreData(id_: noteID as NSNumber, title_: noteTitle, description_: noteDescription, deletedDate_: deletedDate, context: context))
+        noteList.append(NoteCoreData(id_: noteID as NSNumber, title_: noteTitle, description_: noteDescription, context: context))
         DispatchQueue.main.async { [weak self] in
             self?.tableView.reloadData()
         }
     }
     
-    
-//    func addNote(noteTitle: String, noteDescription: String) {
-//        let appDelegate = UIApplication.shared.delegate as! AppDelegate
-//        let context: NSManagedObjectContext = appDelegate.persistentContainer.viewContext
-//        notes.append(NoteData(title_: noteTitle, description_: noteDescription, context: context))
-//    }
-    
 }
 
-extension NoteTableView {
+extension NoteTableView: NoteDetailDelegate {
     
+    
+    func didAddNewNote(noteID: Int, noteTitle: String, noteDescription: String) {
+        addNewNote(noteID: noteID, noteTitle: noteTitle, noteDescription: noteDescription)
+    }
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return noteList.count

@@ -10,14 +10,14 @@ import CoreData
 
 
 protocol NoteDetailDelegate: AnyObject {
-    func didAddNewNote(noteTitle: String, noteDescription: String)
+    func didAddNewNote(noteID: Int, noteTitle: String, noteDescription: String)
 }
 
 
 
 class NoteDetailViewController: UIViewController {
-
-
+    
+    
     var noteList: [NoteCoreData] = []
     var selectedNote: NoteCoreData?
     @IBOutlet weak var titleTextField: UITextField!
@@ -34,18 +34,18 @@ class NoteDetailViewController: UIViewController {
             descriptionTextView.text = selectedNote?.description_
         }
     }
-
+    
     @IBAction func SaveNoteButtonTapped(_ sender: UIButton) {
         
         
         guard let newNoteTitle = titleTextField.text else { return }
         guard let newNoteDescription = descriptionTextView.text else { return }
-        noteDetailDelegate?.didAddNewNote(noteTitle: newNoteTitle, noteDescription: newNoteDescription)
+        noteDetailDelegate?.didAddNewNote(noteID: 1, noteTitle: newNoteTitle, noteDescription: newNoteDescription)
         
         let appDelegate = UIApplication.shared.delegate as! AppDelegate
         let context: NSManagedObjectContext = appDelegate.persistentContainer.viewContext
         guard let entity = NSEntityDescription.entity(forEntityName: "NoteCoreData", in: context) else { return }
-
+        
         let newNote = NoteCoreData(id_: 1, title_: newNoteTitle, description_: newNoteDescription, deletedDate_: Date(timeIntervalSinceNow: 1), context: context)
         do {
             try context.save()
@@ -53,32 +53,12 @@ class NoteDetailViewController: UIViewController {
         } catch {
             print("Context save error")
         }
-            
+        
         
         navigationController?.popViewController(animated: true )
         print("\(newNoteTitle) and \(newNoteDescription)")
     }
     
-    
-//        let appDelegate = UIApplication.shared.delegate as! AppDelegate
-//        let context: NSManagedObjectContext = appDelegate.persistentContainer.viewContext
-//        if selectedNote == nil {
-//            guard let entity = NSEntityDescription.entity(forEntityName: "Note", in: context) else { return }
-////            let newNote = Note(entity: entity, insertInto: context)
-////            newNote.id_ = noteList.count as NSNumber
-////            newNote.title_ = titleTextField.text
-////            newNote.description_ = descriptionTextView.text
-//            do {
-//                try context.save()
-////                noteList.append(newNote)
-//                navigationController?.popViewController(animated: true )
-//            } catch {
-//                print("Context save error")
-//            }
-//        } else {
-//
-//        }
-//    }
-    }
-    
+}
+
 
