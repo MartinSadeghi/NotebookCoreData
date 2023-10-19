@@ -46,7 +46,7 @@ class NoteDetailViewController: UIViewController {
         let context: NSManagedObjectContext = appDelegate.persistentContainer.viewContext
         guard let entity = NSEntityDescription.entity(forEntityName: "NoteCoreData", in: context) else { return }
         
-        let newNote = NoteCoreData(id_: 1, title_: newNoteTitle, description_: newNoteDescription, deletedDate_: Date(timeIntervalSinceNow: 1), context: context)
+        let newNote = NoteCoreData(id_: 1, title_: newNoteTitle, description_: newNoteDescription, context: context)
         do {
             try context.save()
             navigationController?.popViewController(animated: true )
