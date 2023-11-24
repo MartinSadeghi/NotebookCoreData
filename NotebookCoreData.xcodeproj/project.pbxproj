@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		6B9A21252B10AF180039AE6A /* Networking.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B9A21242B10AF180039AE6A /* Networking.swift */; };
 		6B9E9C1A2AD8398D004104F8 /* NoteCoreData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B9E9C192AD8398D004104F8 /* NoteCoreData.swift */; };
 		6B9E9C612AE11EEA004104F8 /* NoteViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B9E9C602AE11EEA004104F8 /* NoteViewModel.swift */; };
 		6BCD96272AD8289100F4BB3E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BCD96262AD8289100F4BB3E /* AppDelegate.swift */; };
@@ -41,6 +42,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		6B9A21242B10AF180039AE6A /* Networking.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Networking.swift; sourceTree = "<group>"; };
 		6B9E9C192AD8398D004104F8 /* NoteCoreData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoteCoreData.swift; sourceTree = "<group>"; };
 		6B9E9C602AE11EEA004104F8 /* NoteViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoteViewModel.swift; sourceTree = "<group>"; };
 		6BCD96232AD8289100F4BB3E /* NotebookCoreData.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = NotebookCoreData.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -89,6 +91,7 @@
 		6BCD961A2AD8289100F4BB3E = {
 			isa = PBXGroup;
 			children = (
+				6B9A21242B10AF180039AE6A /* Networking.swift */,
 				6BCD96252AD8289100F4BB3E /* NotebookCoreData */,
 				6BCD963F2AD8289300F4BB3E /* NotebookCoreDataTests */,
 				6BCD96492AD8289300F4BB3E /* NotebookCoreDataUITests */,
@@ -276,6 +279,7 @@
 				6B9E9C612AE11EEA004104F8 /* NoteViewModel.swift in Sources */,
 				6BCD962B2AD8289100F4BB3E /* NoteDetailViewController.swift in Sources */,
 				6BCD96312AD8289100F4BB3E /* NotebookCoreData.xcdatamodeld in Sources */,
+				6B9A21252B10AF180039AE6A /* Networking.swift in Sources */,
 				6B9E9C1A2AD8398D004104F8 /* NoteCoreData.swift in Sources */,
 				6BCD96272AD8289100F4BB3E /* AppDelegate.swift in Sources */,
 				6BCD965C2AD82CF000F4BB3E /* NoteCell.swift in Sources */,
